@@ -2,8 +2,9 @@
 
 ## about
 
-This project is a resolution
+- this project is a resolution
 of the backend challenge promoted by AmeDigital.
+- challenge link: https://github.com/AmeDigital/challenge-back-end-hit
 
 # project resource
 
