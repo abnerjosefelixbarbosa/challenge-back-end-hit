@@ -32,9 +32,10 @@ public class PlanetService implements IPlanetService
 		Planet planet = new Planet(request);
 		validatePlanet(request);
 		
-		service.getResponses();
+		Long numberFilms = service
+	    .getNumberAppearancesFilms(request);
 		
-		planet.setApparition(1L);
+		planet.setApparition(numberFilms);
 		planet = repository.save(planet);
 		return new PlanetResponse(planet);
 	}
@@ -55,7 +56,7 @@ public class PlanetService implements IPlanetService
 
 	public PlanetResponse searchPlanetById(String id) 
 	{
-		adapeter.searchPlanetByName(id);
+		adapeter.searchPlanetById(id);
 		Planet planet = repository.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("id not found"));
 		return new PlanetResponse(planet);
@@ -63,11 +64,14 @@ public class PlanetService implements IPlanetService
 
 	public void removePlanetById(String id) 
 	{
+		repository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("id not found"));
 		repository.deleteById(id);
 	}
 	
 	private void validatePlanet(PlanetRequest request) 
 	{
-		if (repository.existsByName(request.getName())) throw new RuntimeException("name exists");
+		if (repository.existsByName(request.getName())) 
+			throw new RuntimeException("name exists");
 	}
 }

@@ -1,6 +1,6 @@
 package com.example.backendjava.domain.dtos.responses;
 
-import java.util.Collection;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,5 +13,5 @@ public class PlanetSwapiGetResponse {
 	private Long count;
 	private String next;
 	private String previous;
-	private Collection<?> results;
+	private List<PlanetSwapiResponse> results;
 }
