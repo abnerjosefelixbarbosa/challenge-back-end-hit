@@ -20,7 +20,7 @@ of the backend challenge promoted by AmeDigital.
 
 # project execution
 
-- use api data: https://swapi.dev/api/
+- use api data: https://swapi.dev/
 
 ```bash
 # clone repository
