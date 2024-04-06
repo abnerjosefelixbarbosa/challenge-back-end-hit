@@ -1,34 +1,33 @@
 # challenge-back-end-hit
 
-## about
+## About
 
-- this project is a resolution
-of the backend challenge promoted by AmeDigital.
+- This project is a resolution of the backend challenge promoted by AmeDigital.
 - challenge link: https://github.com/AmeDigital/challenge-back-end-hit
 
-# project resource
+# Project resource
 
-## backend java
+## Backend java
 
-- java 17
-- spring boot
-- clean architecture
+- Java 17
+- Spring boot
+- Clean architecture
 - SOLID
-- lombok
-- swegger 3
-- api SWAPI
-- postgresql database
+- Lombok
+- Swegger 3
+- Api SWAPI
+- Postgresql database
 
-# project execution
+# Project execution
 
-- use api data: https://swapi.dev/
+- Use api data: https://swapi.dev/
 
 ```bash
 # clone repository
 git clone https://github.com/abnerjosefelixbarbosa/api-controle-de-estoque.git
 ```
 
-# author
+# Author
 
 Abner José Felix Barbosa
 
