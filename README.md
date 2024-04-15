@@ -17,6 +17,8 @@
 - API SWAPI - used to external service.
 - PostgreSQL database - used to database.
 - Validation - used to external validation.
+- Threads - used to treatment the service.
+- JUnit 5 - used to unit testing. 
 
 # project execution
 
