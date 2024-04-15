@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,8 @@ import com.example.backendjava.domain.dtos.requests.PlanetRequest;
 import com.example.backendjava.domain.dtos.responses.PlanetResponse;
 import com.example.backendjava.interfaces.IPlanetService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/planets")
 public class PlanetController {
@@ -22,13 +25,13 @@ public class PlanetController {
 	private IPlanetService service;
 
 	@PostMapping
-	public ResponseEntity<PlanetResponse> addPlanet(PlanetRequest request) {
+	public ResponseEntity<PlanetResponse> addPlanet(@RequestBody @Valid PlanetRequest request) {
 		PlanetResponse response = service.addPlanet(request);
 		return ResponseEntity.status(201).body(response);
 	}
 
 	@GetMapping
-	public ResponseEntity<Page<PlanetResponse>> listPlanet(Pageable pageable) {
+	public ResponseEntity<Page<PlanetResponse>> listPlanets(Pageable pageable) {
 		Page<PlanetResponse> responses = service.listPlanet(pageable);
 		return ResponseEntity.status(200).body(responses);
 	}

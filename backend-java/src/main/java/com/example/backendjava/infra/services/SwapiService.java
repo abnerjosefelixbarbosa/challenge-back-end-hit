@@ -25,8 +25,6 @@ public class SwapiService extends Thread {
 					.findFirst().orElseThrow(() -> new EntityNotFoundException("planet not found"));
 			
 			numberAppearances = Long.valueOf(response.getFilms().size());
-			
-			sleep(3000);
 		} catch (Exception e) {
 			throw new RuntimeException(e.getMessage());
 		}
