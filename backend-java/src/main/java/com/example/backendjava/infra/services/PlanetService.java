@@ -1,6 +1,5 @@
 package com.example.backendjava.infra.services;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,10 +14,8 @@ import com.example.backendjava.interfaces.IPlanetService;
 
 import jakarta.persistence.EntityNotFoundException;
 
-
 @Service
-public class PlanetService implements IPlanetService 
-{
+public class PlanetService implements IPlanetService {
 	@Autowired
 	private PlanetRepository repository;
 	@Autowired
@@ -26,52 +23,42 @@ public class PlanetService implements IPlanetService
 	@Autowired
 	private SwapiService service;
 
-	public PlanetResponse addPlanet(PlanetRequest request) 
-	{
+	public PlanetResponse addPlanet(PlanetRequest request) {
 		adapeter.addPlanet(request);
 		Planet planet = new Planet(request);
 		validatePlanet(request);
-		
-		Long numberFilms = service
-	    .getNumberAppearancesFilms(request);
-		
+
+		Long numberFilms = service.getNumberAppearancesFilms(request);
+
 		planet.setApparition(numberFilms);
 		planet = repository.save(planet);
 		return new PlanetResponse(planet);
 	}
 
-	public Page<PlanetResponse> listPlanet(Pageable pageable) 
-	{
+	public Page<PlanetResponse> listPlanet(Pageable pageable) {
 		adapeter.listPlanet(pageable);
 		return repository.findAll(pageable).map(PlanetResponse::new);
 	}
 
-	public PlanetResponse searchPlanetByName(String name) 
-	{
+	public PlanetResponse searchPlanetByName(String name) {
 		adapeter.searchPlanetByName(name);
-		Planet planet = repository.findByName(name)
-				.orElseThrow(() -> new EntityNotFoundException("name not found"));
+		Planet planet = repository.findByName(name).orElseThrow(() -> new EntityNotFoundException("name not found"));
 		return new PlanetResponse(planet);
 	}
 
-	public PlanetResponse searchPlanetById(String id) 
-	{
+	public PlanetResponse searchPlanetById(String id) {
 		adapeter.searchPlanetById(id);
-		Planet planet = repository.findById(id)
-				.orElseThrow(() -> new EntityNotFoundException("id not found"));
+		Planet planet = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("id not found"));
 		return new PlanetResponse(planet);
 	}
 
-	public void removePlanetById(String id) 
-	{
-		repository.findById(id)
-				.orElseThrow(() -> new EntityNotFoundException("id not found"));
+	public void removePlanetById(String id) {
+		repository.findById(id).orElseThrow(() -> new EntityNotFoundException("id not found"));
 		repository.deleteById(id);
 	}
-	
-	private void validatePlanet(PlanetRequest request) 
-	{
-		if (repository.existsByName(request.getName())) 
+
+	private void validatePlanet(PlanetRequest request) {
+		if (repository.existsByName(request.getName()))
 			throw new RuntimeException("name exists");
 	}
 }

@@ -17,42 +17,36 @@ import com.example.backendjava.interfaces.IPlanetService;
 
 @RestController
 @RequestMapping("/api/planets")
-public class PlanetController 
-{
+public class PlanetController {
 	@Autowired
 	private IPlanetService service;
-	
+
 	@PostMapping
-	public ResponseEntity<PlanetResponse> addPlanet(PlanetRequest request) 
-	{
+	public ResponseEntity<PlanetResponse> addPlanet(PlanetRequest request) {
 		PlanetResponse response = service.addPlanet(request);
 		return ResponseEntity.status(201).body(response);
 	}
 
 	@GetMapping
-	public ResponseEntity<Page<PlanetResponse>> listPlanet(Pageable pageable) 
-	{
+	public ResponseEntity<Page<PlanetResponse>> listPlanet(Pageable pageable) {
 		Page<PlanetResponse> responses = service.listPlanet(pageable);
 		return ResponseEntity.status(200).body(responses);
 	}
 
 	@GetMapping("/name")
-	public ResponseEntity<PlanetResponse> searchPlanetByName(@RequestParam String name) 
-	{
+	public ResponseEntity<PlanetResponse> searchPlanetByName(@RequestParam String name) {
 		PlanetResponse response = service.searchPlanetByName(name);
 		return ResponseEntity.status(200).body(response);
 	}
 
 	@GetMapping("/id")
-	public ResponseEntity<PlanetResponse> searchPlanetById(@RequestParam String id) 
-	{
+	public ResponseEntity<PlanetResponse> searchPlanetById(@RequestParam String id) {
 		PlanetResponse response = service.searchPlanetById(id);
 		return ResponseEntity.status(200).body(response);
 	}
 
 	@DeleteMapping("/id")
-	public ResponseEntity<Void> removePlanetById(@RequestParam String id) 
-	{
+	public ResponseEntity<Void> removePlanetById(@RequestParam String id) {
 		service.removePlanetById(id);
 		return ResponseEntity.status(204).body(null);
 	}

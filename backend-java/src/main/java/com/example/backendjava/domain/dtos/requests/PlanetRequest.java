@@ -11,8 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PlanetRequest
-{
+public class PlanetRequest {
 	@NotNull
 	@NotEmpty
 	@Length(max = 50)

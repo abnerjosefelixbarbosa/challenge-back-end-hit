@@ -10,26 +10,27 @@ import com.example.backendjava.domain.dtos.responses.PlanetSwapiResponse;
 import jakarta.persistence.EntityNotFoundException;
 
 @Service
-public class SwapiService {
-	private final String URL = "https://swapi.dev/api/"; 
-	private Long numberAppearances = null;
-	
-	public Long getNumberAppearancesFilms(PlanetRequest request) 
-	{
+public class SwapiService extends Thread {
+	public Long getNumberAppearancesFilms(PlanetRequest request) {
+		final String URL = "https://swapi.dev/api/";
 		RestTemplate template = new RestTemplate();
-		PlanetSwapiGetResponse responses = template
-				.getForObject(URL + "planets/", PlanetSwapiGetResponse.class);
+		PlanetSwapiGetResponse responses = template.getForObject(URL + "planets/", PlanetSwapiGetResponse.class);
+		Long numberAppearances = null;
+		
+		try {
+			PlanetSwapiResponse response = responses.getResults().stream()
+					.filter((val) -> val.getName().equals(request.getName())
+							&& val.getClimate().equals(request.getClimate())
+							&& val.getTerrain().equals(request.getTerrain()))
+					.findFirst().orElseThrow(() -> new EntityNotFoundException("planet not found"));
 			
-		PlanetSwapiResponse response = responses.getResults()
-		.stream()
-		.filter((val) -> val.getName().equals(request.getName()) &&
-				val.getClimate().equals(request.getClimate()) &&
-				val.getTerrain().equals(request.getTerrain()))
-		.findFirst()
-		.orElseThrow(() -> new EntityNotFoundException("planet not found"));
-		
-		numberAppearances = Long.valueOf(response.getFilms().size());
-		
+			numberAppearances = Long.valueOf(response.getFilms().size());
+			
+			sleep(3000);
+		} catch (Exception e) {
+			throw new RuntimeException(e.getMessage());
+		}
+
 		return numberAppearances;
 	}
 }

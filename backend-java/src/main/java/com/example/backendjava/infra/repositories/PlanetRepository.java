@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import com.example.backendjava.infra.entities.Planet;
 
 @Repository
-public interface PlanetRepository extends JpaRepository<Planet, String> 
-{
+public interface PlanetRepository extends JpaRepository<Planet, String> {
 	Optional<Planet> findByName(String name);
+
 	boolean existsByName(String name);
 }

@@ -19,10 +19,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "planet_tb")
-public class Planet implements Serializable
-{
+public class Planet implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	private String id;
@@ -34,9 +33,8 @@ public class Planet implements Serializable
 	private String terrain;
 	@Column(nullable = false)
 	private Long apparition;
-	
-	public Planet(PlanetRequest request) 
-	{
+
+	public Planet(PlanetRequest request) {
 		this.name = request.getName();
 		this.climate = request.getClimate();
 		this.terrain = request.getTerrain();
