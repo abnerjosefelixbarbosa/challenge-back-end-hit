@@ -2,7 +2,7 @@
 
 ## about
 
-- desafio tecnico da AmeDigital.
+Desafio tecnico da AmeDigital.
 
 # project resource
 
