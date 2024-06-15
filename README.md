@@ -18,9 +18,49 @@
 - PostgreSQL.
 - JUnit 5.
 
-# End points
+# end points
 
+## add planet
 
+```JSON
+POST
+/api/planets
+Content-Type: application/json
+
+{
+	"name": "";
+  "climate": ""
+	"terrain": "";
+}
+```
+
+## list planets
+
+```JSON
+GET
+/api/planets
+```
+
+## search planet by name
+
+```JSON
+GET
+/api/planets?name=
+```
+
+## search planet by id
+
+```JSON
+GET
+/api/planets?id=
+```
+
+## remove planet by id
+
+```JSON
+DELETE
+/api/planets?id=
+```
 
 # project execution
 
