@@ -2,28 +2,33 @@
 
 ## about
 
-- This project is a resolution of the backend challenge promoted by repository: https://github.com/AmeDigital/challenge-back-end-hit.
+- desafio tecnico da AmeDigital.
 
 # project resource
 
 ## backend-java
 
-- Java 17 - used to java version.
-- Spring boot - used to framework.
-- Clean architecture - used to software architecture.
-- SOLID - used to software architecture.
-- Lombok - used to generate getter and setter methods.
-- Swegger 3 - used to document this API.
-- API SWAPI - used to external service.
-- PostgreSQL database - used to database.
-- Validation - used to external validation.
-- Threads - used to treatment the service.
-- JUnit 5 - used to unit testing. 
+- Java 17
+- Spring boot.
+- Clean arch.
+- SOLID.
+- Lombok
+- Swegger.
+- API SWAPI.
+- PostgreSQL.
+- JUnit 5.
+
+# End points
+
+
 
 # project execution
 
-- Use postman or swegger interface to test this API.
-- Use api data: https://swapi.dev/.
+- Copie o repositório.
+- Importe o projeto em uma IDE Java.
+- Excute o projeto.
+- Acesse o [documento da API](http://localhost:8080/swagger-ui/index.html) ou use um plataforma para teste de API.
+- Use [dados da API SWAPI](https://swapi.dev/).
 
 ```bash
 # clone repository
@@ -34,4 +39,4 @@ git clone https://github.com/abnerjosefelixbarbosa/challenge-back-end-hit.git
 
 Abner José Felix Barbosa
 
-linkedin: https://www.linkedin.com/in/abner-jose-feliz-barbosa/
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/abner-jose-feliz-barbosa/)
