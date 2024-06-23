@@ -1,12 +1,12 @@
 # challenge-back-end-hit
 
-## about
+## About
 
 Desafio tecnico da AmeDigital.
 
-# project resource
+# Project resource
 
-## backend-java
+## Backend java
 
 - Java 17
 - Spring boot.
@@ -18,9 +18,9 @@ Desafio tecnico da AmeDigital.
 - PostgreSQL.
 - JUnit 5.
 
-# end points
+# End points
 
-## add planet
+## Add planet
 
 ```JSON
 POST
@@ -29,40 +29,40 @@ Content-Type: application/json
 
 {
 	"name": "";
-  "climate": ""
+        "climate": ""
 	"terrain": "";
 }
 ```
 
-## list planets
+## List planets
 
 ```JSON
 GET
 /api/planets
 ```
 
-## search planet by name
+## Search planet by name
 
 ```JSON
 GET
 /api/planets?name=
 ```
 
-## search planet by id
+## Search planet by id
 
 ```JSON
 GET
 /api/planets?id=
 ```
 
-## remove planet by id
+## Remove planet by id
 
 ```JSON
 DELETE
 /api/planets?id=
 ```
 
-# project execution
+# Project execution
 
 - Copie o repositório.
 - Importe o projeto em uma IDE Java.
@@ -75,7 +75,7 @@ DELETE
 git clone https://github.com/abnerjosefelixbarbosa/challenge-back-end-hit.git
 ```
 
-# author
+# Author
 
 Abner José Felix Barbosa
 
