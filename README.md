@@ -1,4 +1,4 @@
-# challenge-back-end-hit
+# Challenge back end hit
 
 ## About
 
@@ -8,19 +8,27 @@ Desafio tecnico da AmeDigital.
 
 ## Backend java
 
-- Java 17
+- Java 17.
 - Spring boot.
-- Clean arch.
+- Arquitetura limpa.
 - SOLID.
-- Lombok
+- Lombok.
 - Swegger.
 - API SWAPI.
 - PostgreSQL.
 - JUnit 5.
 
+## Funtion
+
+- Adicionar planeta.
+- Listar planeta.
+- Procurar planeta pelo nome.
+- Procurar planeta pelo id.
+- Remover planeta pelo id.
+
 # End points
 
-## Add planet
+## Adicionar planeta
 
 ```JSON
 POST
@@ -34,28 +42,28 @@ Content-Type: application/json
 }
 ```
 
-## List planets
+## Listar planetas
 
 ```JSON
 GET
 /api/planets
 ```
 
-## Search planet by name
+##  Procurar planeta pelo nome
 
 ```JSON
 GET
 /api/planets?name=
 ```
 
-## Search planet by id
+## Procurar planeta pelo id
 
 ```JSON
 GET
 /api/planets?id=
 ```
 
-## Remove planet by id
+## Remover planeta pelo id
 
 ```JSON
 DELETE
@@ -65,7 +73,7 @@ DELETE
 # Project execution
 
 - Copie o repositório.
-- Importe o projeto em uma IDE Java.
+- Importe o projeto em uma IDE.
 - Excute o projeto.
 - Acesse o [documento da API](http://localhost:8080/swagger-ui/index.html) ou use um plataforma para teste de API.
 - Use [dados da API SWAPI](https://swapi.dev/).
