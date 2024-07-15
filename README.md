@@ -2,7 +2,7 @@
 
 ## About
 
-Desafio tecnico da AmeDigital.
+Technical challenge from Ame Digital.
 
 # Project resource
 
@@ -18,17 +18,17 @@ Desafio tecnico da AmeDigital.
 - PostgreSQL.
 - JUnit 5.
 
-## Funtion
+## Function
 
-- Adicionar planeta.
-- Listar planeta.
-- Procurar planeta pelo nome.
-- Procurar planeta pelo id.
-- Remover planeta pelo id.
+- Add planet.
+- List planets.
+- Search for planet by name.
+- Search for planet by id.
+- Remove planet by id.
 
 # End points
 
-## Adicionar planeta
+## Add planet
 
 ```JSON
 POST
@@ -42,28 +42,28 @@ Content-Type: application/json
 }
 ```
 
-## Listar planetas
+## List planets
 
 ```JSON
 GET
 /api/planets
 ```
 
-##  Procurar planeta pelo nome
+##  Search for planet by name
 
 ```JSON
 GET
 /api/planets?name=
 ```
 
-## Procurar planeta pelo id
+## Search for planet by id
 
 ```JSON
 GET
 /api/planets?id=
 ```
 
-## Remover planeta pelo id
+## Remove planet by id
 
 ```JSON
 DELETE
@@ -72,11 +72,11 @@ DELETE
 
 # Project execution
 
-- Copie o repositório.
-- Importe o projeto em uma IDE.
-- Excute o projeto.
-- Acesse o [documento da API](http://localhost:8080/swagger-ui/index.html) ou use um plataforma para teste de API.
-- Use [dados da API SWAPI](https://swapi.dev/).
+- Copy the repository.
+- Import the project into an IDE.
+- Run the project.
+- Access the [API document](http://localhost:8080/swagger-ui/index.html) or use an API testing platform.
+- Use [SWAPI API data](https://swapi.dev/).
 
 ```bash
 # clone repository
