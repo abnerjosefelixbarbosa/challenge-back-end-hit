@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.backendjava.domain.dtos.requests.PlanetRequest;
 import com.example.backendjava.domain.dtos.responses.PlanetResponse;
-import com.example.backendjava.interfaces.IPlanetService;
+import com.example.backendjava.domain.usecase.IPlanetUseCase;
 
 import jakarta.validation.Valid;
 
@@ -22,35 +22,35 @@ import jakarta.validation.Valid;
 @RequestMapping("/api/planets")
 public class PlanetController {
 	@Autowired
-	private IPlanetService service;
+	private IPlanetUseCase planetUseCase;
 
-	@PostMapping
+	@PostMapping("/add-planet")
 	public ResponseEntity<PlanetResponse> addPlanet(@RequestBody @Valid PlanetRequest request) {
-		PlanetResponse response = service.addPlanet(request);
+		PlanetResponse response = planetUseCase.addPlanet(request);
 		return ResponseEntity.status(201).body(response);
 	}
 
-	@GetMapping
+	@GetMapping("/list-planets")
 	public ResponseEntity<Page<PlanetResponse>> listPlanets(Pageable pageable) {
-		Page<PlanetResponse> responses = service.listPlanet(pageable);
+		Page<PlanetResponse> responses = planetUseCase.listPlanet(pageable);
 		return ResponseEntity.status(200).body(responses);
 	}
 
-	@GetMapping("/name")
+	@GetMapping("/search-planet-by-name")
 	public ResponseEntity<PlanetResponse> searchPlanetByName(@RequestParam String name) {
-		PlanetResponse response = service.searchPlanetByName(name);
+		PlanetResponse response = planetUseCase.searchPlanetByName(name);
 		return ResponseEntity.status(200).body(response);
 	}
 
-	@GetMapping("/id")
+	@GetMapping("/search-planet-by-id")
 	public ResponseEntity<PlanetResponse> searchPlanetById(@RequestParam String id) {
-		PlanetResponse response = service.searchPlanetById(id);
+		PlanetResponse response = planetUseCase.searchPlanetById(id);
 		return ResponseEntity.status(200).body(response);
 	}
 
-	@DeleteMapping("/id")
+	@DeleteMapping("/remove-planet-by-id")
 	public ResponseEntity<Void> removePlanetById(@RequestParam String id) {
-		service.removePlanetById(id);
+		planetUseCase.removePlanetById(id);
 		return ResponseEntity.status(204).body(null);
 	}
 }

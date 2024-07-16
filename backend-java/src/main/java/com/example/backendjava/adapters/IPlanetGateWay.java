@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 import com.example.backendjava.domain.dtos.requests.PlanetRequest;
 import com.example.backendjava.domain.dtos.responses.PlanetResponse;
 
-public interface PlanetAdapeter {
+public interface IPlanetGateWay {
 	PlanetResponse addPlanet(PlanetRequest request);
 
 	Page<PlanetResponse> listPlanet(Pageable pageable);

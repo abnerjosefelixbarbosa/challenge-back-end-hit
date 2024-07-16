@@ -19,7 +19,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import com.example.backendjava.domain.dtos.requests.PlanetRequest;
 import com.example.backendjava.infra.entities.Planet;
-import com.example.backendjava.infra.repositories.PlanetRepository;
+import com.example.backendjava.infra.repositories.IPlanetRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest
@@ -31,16 +31,16 @@ public class PlanetControllerTest {
 	@Autowired
 	private ObjectMapper mapper;
 	@Autowired
-	private PlanetRepository repository;
+	private IPlanetRepository planetRepository;
 	
 	@BeforeEach
 	public void setup() {
-		repository.deleteAll();
+		planetRepository.deleteAll();
 	}
 
 	@AfterEach
 	public void tearDown() {
-		repository.deleteAll();
+		planetRepository.deleteAll();
 	}
 	
 	@Test
@@ -50,7 +50,7 @@ public class PlanetControllerTest {
 		
 		String object = mapper.writeValueAsString(request);
 	
-		mvc.perform(post("/api/planets")
+		mvc.perform(post("/api/planets/add-planet")
 				.contentType(MediaType.APPLICATION_JSON)
 				.headers(httpHeaders)
 				.content(object))
@@ -64,13 +64,13 @@ public class PlanetControllerTest {
 		Planet planet2 = new Planet(null, "Alderaan", "temperate", "grasslands, mountains", 2L);
 		Planet planet3 = new Planet(null, "Yavin IV", "temperate, tropical", "jungle, rainforests", 1L);
 		
-		repository.save(planet1);
-		repository.save(planet2);
-		repository.save(planet3);
+		planetRepository.save(planet1);
+		planetRepository.save(planet2);
+		planetRepository.save(planet3);
 		
 		HttpHeaders httpHeaders = new HttpHeaders();
 	
-		mvc.perform(get("/api/planets?page=0&size=3&sort=name")
+		mvc.perform(get("/api/planets/list-planets")
 				.headers(httpHeaders))
 		.andExpect(MockMvcResultMatchers.status().isOk())
 		.andDo(print());
@@ -80,11 +80,11 @@ public class PlanetControllerTest {
 	public void searchPlanetByNameAndReturnStatus200() throws Exception {
 		Planet planet = new Planet(null, "Tatooine", "arid", "desert", 5L);
 		
-		planet = repository.save(planet);
+		planet = planetRepository.save(planet);
 		
 		HttpHeaders httpHeaders = new HttpHeaders();
 	
-		mvc.perform(get("/api/planets/name?name=" + planet.getName())
+		mvc.perform(get("/api/planets/search-planet-by-name?name=" + planet.getName())
 				.headers(httpHeaders))
 		.andExpect(MockMvcResultMatchers.status().isOk())
 		.andDo(print());
@@ -94,11 +94,11 @@ public class PlanetControllerTest {
 	public void searchPlanetByIdAndReturnStatus200() throws Exception {
 		Planet planet = new Planet(null, "Tatooine", "arid", "desert", 5L);
 		
-		planet =  repository.save(planet);
+		planet =  planetRepository.save(planet);
 		
 		HttpHeaders httpHeaders = new HttpHeaders();
 	
-		mvc.perform(get("/api/planets/id?id=" + planet.getId())
+		mvc.perform(get("/api/planets/search-planet-by-id?id=" + planet.getId())
 				.headers(httpHeaders))
 		.andExpect(MockMvcResultMatchers.status().isOk())
 		.andDo(print());
@@ -108,11 +108,11 @@ public class PlanetControllerTest {
 	public void removePlanetByIdAndReturnStatus204() throws Exception {
 		Planet planet = new Planet(null, "Tatooine", "arid", "desert", 5L);
 		
-		planet =  repository.save(planet);
+		planet =  planetRepository.save(planet);
 		
 		HttpHeaders httpHeaders = new HttpHeaders();
 	
-		mvc.perform(delete("/api/planets/id?id=" + planet.getId())
+		mvc.perform(delete("/api/planets/remove-planet-by-id?id=" + planet.getId())
 				.headers(httpHeaders))
 		.andExpect(MockMvcResultMatchers.status().isNoContent())
 		.andDo(print());

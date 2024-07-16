@@ -5,60 +5,58 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.example.backendjava.adapters.PlanetAdapeter;
+import com.example.backendjava.adapters.IPlanetGateWay;
 import com.example.backendjava.domain.dtos.requests.PlanetRequest;
 import com.example.backendjava.domain.dtos.responses.PlanetResponse;
 import com.example.backendjava.infra.entities.Planet;
-import com.example.backendjava.infra.repositories.PlanetRepository;
-import com.example.backendjava.interfaces.IPlanetService;
+import com.example.backendjava.infra.mappers.PlanetMapper;
+import com.example.backendjava.infra.repositories.IPlanetRepository;
 
 import jakarta.persistence.EntityNotFoundException;
 
 @Service
-public class PlanetService implements IPlanetService {
+public class PlanetService implements IPlanetGateWay {
 	@Autowired
-	private PlanetRepository repository;
+	private IPlanetRepository planetRepository;
 	@Autowired
-	private PlanetAdapeter adapeter;
+	private SwapiService swapiService;
 	@Autowired
-	private SwapiService service;
+	private PlanetMapper planetMapper;
 
 	public PlanetResponse addPlanet(PlanetRequest request) {
-		adapeter.addPlanet(request);
-		Planet planet = new Planet(request);
+		Planet planet = planetMapper.toPlanet(request);
 		validatePlanet(request);
 
-		Long numberFilms = service.getNumberAppearancesFilms(request);
+		Long numberFilms = swapiService.getNumberAppearancesFilms(request);
 
 		planet.setApparition(numberFilms);
-		planet = repository.save(planet);
-		return new PlanetResponse(planet);
+		return planetMapper.toPlanetResponse(planetRepository.save(planet));
 	}
 
 	public Page<PlanetResponse> listPlanet(Pageable pageable) {
-		adapeter.listPlanet(pageable);
-		return repository.findAll(pageable).map(PlanetResponse::new);
+		return planetRepository.findAll(pageable).map(planetMapper::toPlanetResponse);
 	}
 
 	public PlanetResponse searchPlanetByName(String name) {
-		adapeter.searchPlanetByName(name);
-		Planet planet = repository.findByName(name).orElseThrow(() -> new EntityNotFoundException("name not found"));
-		return new PlanetResponse(planet);
+		return planetRepository.findByName(name).map((val) -> planetMapper.toPlanetResponse(val))
+				.orElseThrow(() -> new EntityNotFoundException("name not found"));
 	}
 
 	public PlanetResponse searchPlanetById(String id) {
-		adapeter.searchPlanetById(id);
-		Planet planet = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("id not found"));
-		return new PlanetResponse(planet);
+		return planetRepository.findById(id).map((val) -> planetMapper.toPlanetResponse(val))
+				.orElseThrow(() -> new EntityNotFoundException("id not found"));
 	}
 
 	public void removePlanetById(String id) {
-		repository.findById(id).orElseThrow(() -> new EntityNotFoundException("id not found"));
-		repository.deleteById(id);
+		planetRepository.findById(id).map((val) -> {
+			planetRepository.deleteById(val.getId());
+			return null;
+		}).orElseThrow(() -> new EntityNotFoundException("id not found"));
 	}
 
 	private void validatePlanet(PlanetRequest request) {
-		if (repository.existsByName(request.getName()))
+		if (planetRepository.existsByName(request.getName())) {
 			throw new RuntimeException("name exists");
+		}
 	}
 }
