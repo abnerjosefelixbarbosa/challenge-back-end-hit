@@ -12,8 +12,9 @@ Technical challenge from Ame Digital.
 
 - Java 17.
 - Spring boot.
-- Arquitetura limpa.
+- Clean architecture.
 - SOLID.
+- Hibernate.
 - Lombok.
 - Swegger.
 - API SWAPI.
