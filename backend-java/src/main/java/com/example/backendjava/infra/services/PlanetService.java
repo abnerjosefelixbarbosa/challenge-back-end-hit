@@ -48,10 +48,11 @@ public class PlanetService implements IPlanetGateWay {
 	}
 
 	public void removePlanetById(String id) {
-		planetRepository.findById(id).map((val) -> {
-			planetRepository.deleteById(val.getId());
-			return null;
-		}).orElseThrow(() -> new EntityNotFoundException("id not found"));
+		Planet planet = planetRepository
+		.findById(id)
+	    .orElseThrow(() -> new EntityNotFoundException("id not found"));
+		
+		planetRepository.delete(planet);
 	}
 
 	private void validatePlanet(PlanetRequest request) {
