@@ -35,7 +35,7 @@ Technical challenge from Ame Digital.
 
 ```JSON
 POST
-/api/planets
+/api/planets/add-planet
 Content-Type: application/json
 
 {
@@ -49,28 +49,28 @@ Content-Type: application/json
 
 ```JSON
 GET
-/api/planets
+/api/planets/list-planets
 ```
 
 ##  Search for planet by name
 
 ```JSON
 GET
-/api/planets?name=
+/api/planets/search-planet-by-name?name=
 ```
 
 ## Search for planet by id
 
 ```JSON
 GET
-/api/planets?id=
+/api/planets/search-planet-by-id?id=
 ```
 
 ## Remove planet by id
 
 ```JSON
 DELETE
-/api/planets?id=
+/api/planets/remove-planet-by-id?id=
 ```
 
 # Project execution
