@@ -1,37 +1,37 @@
 # Challenge back end hit
 
-## About
+## Sobre
 
-Technical challenge from Ame Digital.
+Desvio técnico da Ame Digital.
 
-[challenge link](https://github.com/AmeDigital/challenge-back-end-hit)
+[link do desafio](https://github.com/AmeDigital/challenge-back-end-hit)
 
-# Project resource
+# Recursos do projeto
 
 ## Backend java
 
 - Java 17.
 - Spring boot.
-- Clean architecture.
+- Arquitetura limpa.
 - SOLID.
-- Hibernate.
+- Hibernate JPA.
 - Lombok.
 - Swegger.
 - API SWAPI.
 - PostgreSQL.
 - JUnit 5.
 
-## Function
+## Funcionalidades
 
-- Add planet.
-- List planets.
-- Search for planet by name.
-- Search for planet by id.
-- Remove planet by id.
+- Adicinar planeta.
+- Listar planetas.
+- Pesquisa planeta pelo nome.
+- Pesquisar planeta pelo id.
+- Remover planeta pelo id.
 
-# End points
+# Requisições 
 
-## Add planet
+## Adicinar planeta
 
 ```JSON
 POST
@@ -45,40 +45,38 @@ Content-Type: application/json
 }
 ```
 
-## List planets
+## Listar planetas
 
 ```JSON
 GET
 /api/planets/list-planets
 ```
 
-##  Search for planet by name
+##  Pesquisa planeta pelo nome
 
 ```JSON
 GET
 /api/planets/search-planet-by-name?name=
 ```
 
-## Search for planet by id
+## Pesquisar planeta pelo id
 
 ```JSON
 GET
 /api/planets/search-planet-by-id?id=
 ```
 
-## Remove planet by id
+## Remover planeta pelo id
 
 ```JSON
 DELETE
 /api/planets/remove-planet-by-id?id=
 ```
 
-# Project execution
+# Execução do projeto
 
-- Copy the repository.
-- Import the project into an IDE.
-- Run the project.
-- Access the [API document](http://localhost:8080/swagger-ui/index.html) or use an API testing platform.
+- Copie e execute o repositório em uma IDE.
+- Acesse o [documento da API API](http://localhost:8080/swagger-ui/index.html) ou use outra plataforma.
 - Use [SWAPI API data](https://swapi.dev/).
 
 ```bash
@@ -86,7 +84,7 @@ DELETE
 git clone https://github.com/abnerjosefelixbarbosa/challenge-back-end-hit.git
 ```
 
-# Author
+# Autor
 
 Abner José Felix Barbosa
 
