@@ -76,7 +76,7 @@ DELETE
 # Execução do projeto
 
 - Copie e execute o repositório em uma IDE.
-- Acesse o [documento da API API](http://localhost:8080/swagger-ui/index.html) ou use outra plataforma.
+- Acesse o [documento da API](http://localhost:8080/swagger-ui/index.html) ou use outra plataforma.
 - Use [SWAPI API data](https://swapi.dev/).
 
 ```bash
