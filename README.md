@@ -2,7 +2,7 @@
 
 ## Sobre
 
-Desvio técnico da Ame Digital.
+Desafio técnico da Ame Digital.
 
 [link do desafio](https://github.com/AmeDigital/challenge-back-end-hit)
 
