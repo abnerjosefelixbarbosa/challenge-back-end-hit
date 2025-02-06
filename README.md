@@ -4,8 +4,6 @@
 
 Desafio técnico da Ame Digital.
 
-[link do desafio](https://github.com/AmeDigital/challenge-back-end-hit)
-
 # Recursos do projeto
 
 ## Backend java
