@@ -4,6 +4,10 @@
 
 Desafio técnico da Ame Digital.
 
+## Modelo
+
+![Image](https://github.com/user-attachments/assets/330625c9-8d47-4c90-97ce-866b4cbb32b7)
+
 # Recursos do projeto
 
 ## Backend java
